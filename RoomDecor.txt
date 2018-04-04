@@ -1,0 +1,121 @@
+public abstract class Amenities
+{
+    public abstract double cost();
+
+    public abstract String getDescription();
+}
+
+
+public class HotelRoom extends Amenities
+{
+    public HotelRoom()
+    {
+
+    }
+
+    public HotelRoom(int size)
+    {
+        occupants = size;
+    }
+
+    public String getDescription()
+    {
+        return "A Hotel Room";
+    }
+
+    public double cost()
+    {
+        return cost;
+    }
+
+    private static final double cost = 50.00;
+    private int occupants;
+}
+
+public class foodbar extends RoomDecorater
+{
+    public static final double cost = 10.00;
+    protected Amenities room;
+
+    @Override
+    public double cost() {
+        return room.cost() + cost;
+    }
+
+    @Override
+    public String getDescription() {
+        return room.getDescription() + " with a Food Bar";
+    }
+
+    public foodbar(Amenities rm)
+    {
+        room = rm;
+    }
+}
+
+
+public class Spa extends RoomDecorater
+{
+    public static final double cost = 20.00;
+    protected Amenities room;
+
+    @Override
+    public double cost() {
+        return room.cost() + cost;
+    }
+
+    @Override
+    public String getDescription() {
+        return room.getDescription() + " with a Spa";
+    }
+
+    public Spa(Amenities rm)
+    {
+        room = rm;
+    }
+}
+
+
+public class SprayResistShower extends RoomDecorater
+{
+    public static final double cost = 25.00;
+    public Amenities room;
+
+    @Override
+    public double cost() {
+        return room.cost() + cost;
+    }
+
+    @Override
+    public String getDescription() {
+        return room.getDescription() + " with a Spray Resistant Shower";
+    }
+
+    public SprayResistShower(Amenities rm)
+    {
+        room = rm;
+    }
+}
+
+
+public class Autorefill extends Amenities
+{
+    public static final double cost = 5.00;
+
+    protected Amenities room;
+
+    @Override
+    public double cost() {
+        return room.cost() + cost;
+    }
+
+    public String getDescription()
+    {
+        return room.getDescription() + " with Auto Refill";
+    }
+
+    public Autorefill(Amenities rm)
+    {
+        room = rm;
+    }
+}
